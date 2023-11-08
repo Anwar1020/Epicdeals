@@ -331,8 +331,10 @@ class AboutView (TemplateView):
         context = super().get_context_data(**kwarg)
         context['category'] = Category.objects.all()
         return context 
-
-
+def sun():
+    a = 5
+    b = 20
+    return a+b
 
 
 
