@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta name="csrf_token" content="{{ csrf_token }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title%}
+        {%endblock%}
+
+    </title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+</head>
+<body id="body">
+  
+
+    <nav style="display: flex; justify-content: space-between; align-items: center; background-color: #1f2a33;
+    padding: 10px; color: #fff; font-family: Arial, sans-serif; font-size: 25px;">
+       <ul style="display: flex;">
+           
+           {% if request.user.is_authenticated %}
+           <li style="list-style: none; margin-right: 15px;"><a href = "{% url 'seller:sellerhome' request.user.username %}">Home</a></li>
+           <li style="list-style: none; margin-right: 15px;"><a href = "{% url 'seller:selleraddproduct' request.user.username %}">Add Product</a></li>
+           <li style="list-style: none; margin-right: 15px;"><a href = "{% url 'seller:sellerprofile' request.user.username %}">Orders</a></li>
+           {% else %}
+           <li style="list-style: none; margin-right: 15px;"><a href = "">Add Product</a></li>
+           <li style="list-style: none; margin-right: 15px;"><a href = "">Orders</a></li>
+           {% endif %}
+           </li>
+           
+       </ul>
+       <ul style="display: flex;">
+          
+           {% if request.user.seller_store %}
+           <li style="list-style: none; margin-left: 15px;"><a href="">{{request.user.seller_store}}</a></li> 
+           <li style="list-style: none; margin-left: 15px;"><a href="{% url 'seller:sellerlogout'%}">Logout</a></li>
+           {% else %}
+           <li style="list-style: none; margin-left: 15px;"><a href="{% url 'seller:sellerregistration' %}">Register</a></li> 
+           <li style="list-style: none; margin-left: 15px;"><a href="{% url 'seller:sellerlogin' %}">Login</a></li> 
+           {% endif %}
+           
+       </ul>
+   </nav>
+          
+
+   <script>
+     
+
+     
+  var category = document.getElementById("category");
+  var dropdownOptions = document.getElementById("dropdownOptions");
+  category.addEventListener("click", function(event) {
+
+
+    if (dropdownOptions.style.display === "none") {
+      dropdownOptions.style.display = "block";
+    } else {
+      dropdownOptions.style.display = "none";
+    }
+
+
+
+  });
+
+  
+   
+  </script>
+    
+
+       {% block body %}
+       {%endblock%}
+</body>
+</html>
