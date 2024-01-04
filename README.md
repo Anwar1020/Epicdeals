@@ -27,13 +27,13 @@ Welcome to our E-Commerce website! This platform offers customers a seamless sho
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/e-commerce.git
+    git clone https://github.com/Anwar1020/Epicdeals.git
     ```
 
 2. Browse to the project(Which directory contains manage.py file):
 
     ```bash
-    cd e-commerce
+    cd Epicdeals
    
 
 3. Run migrations:
